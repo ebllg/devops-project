@@ -1,3 +1,5 @@
+name: dev-build-deploy
+
 on: [pull_request]
 
 jobs:
