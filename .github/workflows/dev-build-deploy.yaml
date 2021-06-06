@@ -1,4 +1,4 @@
-name: dev-build-deploy
+name: dev
 
 on: [pull_request]
 
@@ -18,3 +18,13 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run unit tests
         run: pytest
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install Serverless framework
+        run: npm install -g serverless
