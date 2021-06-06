@@ -1,0 +1,26 @@
+service: devops-project
+
+frameworkVersion: "2"
+
+custom:
+  myStage: ${opt:stage}
+  myProfile:
+    dev: devops-dev
+    staging: devops-staging
+    prod: devops-prod
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-east-1
+  profile: ${self:custom.myProfile.${self:custom.myStage}}
+  memorySize: 256
+  timeout: 30
+
+functions:
+  add:
+    handler: calculator.add
+    events:
+      - http:
+          method: post
+          path: add
