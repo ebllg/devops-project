@@ -19,6 +19,7 @@ jobs:
       - name: Run unit tests
         run: pytest
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

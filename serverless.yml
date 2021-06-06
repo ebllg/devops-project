@@ -11,7 +11,7 @@ provider:
 
 functions:
   add:
-    handler: ./app/calculator.add
+    handler: app/calculator.add
     events:
       - http:
           method: post
