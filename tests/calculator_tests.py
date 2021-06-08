@@ -13,4 +13,4 @@ class CalculatorTests(TestCase):
         resp = add(event, context={})
 
         self.assertEqual(resp["statusCode"], 200)
-        self.assertEqual(resp["body"], json.dumps({"result": 15}))
+        self.assertEqual(resp["body"], json.dumps({"latestResult": 15}))
