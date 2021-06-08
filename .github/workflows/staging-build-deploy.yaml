@@ -29,7 +29,6 @@ jobs:
       - name: Install Serverless framework
         run: npm install -g serverless
       - name: Serverless AWS authentication
-        run: sls config credentials --provider aws --key ${{ secrets.STAGING_ACCESS_KEY_ID }} --secret ${{ secrets
-        .STAGING_SECRET_ACCESS_KEY }}
+        run: sls config credentials --provider aws --key ${{ secrets.STAGING_ACCESS_KEY_ID }} --secret ${{ secrets.STAGING_SECRET_ACCESS_KEY }}
       - name: Deploy app on AWS
         run: sls deploy --stage staging
