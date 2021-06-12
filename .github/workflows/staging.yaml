@@ -1,0 +1,19 @@
+name: staging
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install Serverless framework
+        run: npm install -g serverless
+      - name: Serverless AWS authentication
+        run: sls config credentials --provider aws --key ${{ secrets.STAGING_ACCESS_KEY_ID }} --secret ${{ secrets.STAGING_SECRET_ACCESS_KEY }}
+      - name: Deploy app on AWS
+        run: sls deploy --stage staging
