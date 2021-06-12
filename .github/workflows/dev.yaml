@@ -16,7 +16,7 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Black
-        run: black .
+        run: black --check .
       - name: Bandit
         run: bandit .
       - name: Tests
