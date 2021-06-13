@@ -1,9 +1,9 @@
-name: staging
+name: deploy-staging
 
 on: workflow_dispatch
 
 jobs:
-  deploy:
+  deploy-staging:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
