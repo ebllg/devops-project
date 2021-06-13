@@ -17,13 +17,14 @@ jobs:
       - name: Install Serverless framework
         run: npm install -g serverless
       - name: Serverless AWS authentication
-        run: sls config credentials --provider aws --key ${{ secrets.PROD_ACCESS_KEY_ID }} --secret ${{ secrets.PROD_SECRET_ACCESS_KEYY }}
+        run: sls config credentials --provider aws --key ${{ secrets.PROD_ACCESS_KEY_ID }} --secret ${{ secrets.PROD_SECRET_ACCESS_KEY }}
       - name: Deploy app on AWS
         run: sls deploy --stage prod
       - name: Slack Notification
         if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
+          SLACK_CHANNEL: prod-deployments
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
           SLACK_USERNAME: github-alerts
