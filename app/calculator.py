@@ -6,6 +6,7 @@ logger = logging.getLogger(__name__)
 
 
 def check_float_or_int(num):
+    # validation
     if isinstance(num, int) or isinstance(num, float):
         return True
     return False
