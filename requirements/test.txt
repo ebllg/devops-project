@@ -2,3 +2,4 @@ pytest
 black
 bandit
 isort
+django==3.0
